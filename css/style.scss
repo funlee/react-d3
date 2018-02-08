@@ -1,0 +1,74 @@
+/*
+ * @Author: funlee
+ * @Email: i@funlee.cn
+ * @Date: 2018-01-18 21:18:20
+ * @Last Modified time: 2018-01-18 21:18:20
+ * @Description: react todo style 
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+nav {
+    text-align: center;
+    margin-top: 20px;
+    span {
+        display: inline-block;
+        padding: 0 16px;
+        a{
+            display: inline-block;
+            text-decoration:none;
+            font-size: 16px;
+            cursor: pointer;
+            white-space: nowrap;
+            padding: 6px 12px;
+            line-height: 1.42857143;
+            color: #333;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            &:hover,
+            &.active{
+                border-color: #adadad;
+                background: #e6e6e6;
+            }
+        }
+    }
+}
+
+.charts-wrap {
+    margin: 20px auto;
+    width: 800px;
+    height: 500px;
+    background: #F3F3F3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
