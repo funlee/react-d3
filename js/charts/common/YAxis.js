@@ -7,13 +7,11 @@
  */
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
-
 import { getYScale } from './utils'
-
 class YAxis extends Component {
   static propTypes = {
-    data: PropTypes.array,
-    option: PropTypes.object
+    data: PropTypes.array.isRequired,
+    option: PropTypes.object.isRequired
   }
   render() {
     const {
@@ -21,33 +19,47 @@ class YAxis extends Component {
       option: {
         width,
         height,
-        margin,
-        yAxis: {
-          color,
-          fontSize
-        }
+        margin
       }
     } = this.props
     const { top, right, bottom, left } = margin
     const scale = getYScale(data, height, margin)
     const tickData = scale.ticks(5)
-
     const ticks = tickData.map((d, i) => {
-      const y = scale(d)
+      const y = height - bottom - scale(d)
       return (
         <g className="y-axis-tick" key={`tick-${i}`}>
-          <line x1={left - 6} x2={left} y1={y} y2={y} stroke="#808080" />
-          <text x={left - 10} y={y} dy={8} textAnchor="end" stroke={color} fontSize={fontSize}>{tickData[tickData.length - i]}</text>
+          <line 
+            x1={left - 6} 
+            x2={left} 
+            y1={y} 
+            y2={y} 
+            stroke='rgb(70,170,255)' 
+          />
+          <text 
+            x={left - 10} 
+            y={y} dy={8} 
+            textAnchor='end'
+            fontSize={16} 
+            fill='#46aaff'
+          >
+          {tickData[i]}
+          </text>
         </g>
       )
     })
     return (
       <g className="y-axis">
-        <line x1={left} y1={top} x2={left} y2={height - bottom} stroke="#808080" />
+        <line 
+          x1={left} 
+          y1={top} 
+          x2={left} 
+          y2={height - bottom + 6} 
+          stroke='rgba(70,170,255,0.6)' 
+        />
         {ticks}
       </g>
     )
   }
 }
-
 export default YAxis

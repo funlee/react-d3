@@ -7,68 +7,47 @@
  */
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
-import * as d3 from 'd3'
-
 import { getRandomId } from './common/utils'
 import GetLinearGradient from './common/GetLinearGradient'
 import RectBar from './common/RectBar'
 import XAxis from './common/XAxis'
 import YAxis from './common/YAxis'
-
+import PathLine from './common/PathLine'
 class BarChart extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      normalId: getRandomId(),
-      emphasizeId: getRandomId()
+      normalId: getRandomId()
     }
   }
   static propTypes = {
-    option:PropTypes.object,
-    data: PropTypes.array
+    option: PropTypes.object.isRequired,
+    data: PropTypes.array.isRequired
   }
   static defaultProps = {
     // defaultOption
   }
-  emphasize() {
-    // emphasize style
-  }
   render() {
-    const {
-      data,
-      option:{
-        width,
-        height,
-        itemStyle:{
-          normal,
-          emphasize
-        }
-      }
-    } = this.props
-
+    const { data, option } = this.props
+    const { width, height, itemStyle:{ normal } } = option
     let xData = []
     let yData = []
-
     data.map(d => {
       xData.push(d.name)
       yData.push(d.value)
     })
-
     const normalId = this.state.normalId
-    const emphasizeId = this.state.emphasizeId
-
     return(
       <svg width={width} height={height}>
         <defs>
           <GetLinearGradient id={normalId} color={normal} />
-          <GetLinearGradient id={emphasizeId} color={emphasize} />
         </defs>
-        <RectBar data={yData} option={this.props.option} fillId={normalId}/>
-        <XAxis data={xData} option={this.props.option} />
-        <YAxis data={yData} option={this.props.option} />
+        <RectBar data={yData} option={option} fillId={normalId} />
+        <XAxis data={xData} option={option} />
+        <YAxis data={yData} option={option} />
+        <PathLine data={yData} option={option} />
       </svg>
     )
   }
 }
-
 export default BarChart

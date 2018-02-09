@@ -7,11 +7,25 @@
  */
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
-
 import Mock from 'mockjs'
 import BarChart from '../charts/BarChart'
-
 class Bar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: this.getData()
+    }
+  }
+  getData() {
+    return Mock.mock({
+      'bar|6': [
+        {
+          'name': '@first()',
+          'value': '@natural(10, 1000)'
+        }
+      ]
+    })
+  }
   renderOption() {
     return {
       width: 800,
@@ -30,56 +44,30 @@ class Bar extends Component {
           y2: 100,
           colorStops: [{
             offset: 0,
-            color: 'red',
+            color: '#00ffff', 
             opacity: 0.8
           },{
             offset: 100,
-            color: 'blue',
-            opacity: 0.8
-          }]
-        },
-        emphasize: {
-          x1: 0,
-          y1: 0,
-          x2: 0,
-          y2: 100,
-          colorStops: [{
-            offset: 0,
-            color: 'blue',
-            opacity: 0.8
-          },{
-            offset: 100,
-            color: 'red',
+            color: '#4a8ce5',
             opacity: 0.8
           }]
         }
-      },
-      xAxis: {
-        color: '#62a4f6',
-        fontSize: 14
-      },
-      yAxis: {
-        color: '#c3e2ff',
-        fontSize: 16
       }
     }
   }
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        data: this.getData()
+      })
+    },8000)
+  }
   render() {
-    const dataset = Mock.mock({
-      'bar|6':[
-        {
-          'name': '@first()',
-          'value': '@natural(100, 1000)'
-        }
-      ]
-    })
-
     return(
       <div>
-        <BarChart data={dataset.bar} option={this.renderOption()} />
+        <BarChart data={this.state.data.bar} option={this.renderOption()} />
       </div>
     )
   }
 }
-
 export default Bar

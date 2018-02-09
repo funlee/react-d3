@@ -7,13 +7,11 @@
  */
 import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
-
 import { getXScale } from './utils'
-
 class XAxis extends Component {
   static propTypes = {
-    data: PropTypes.array,
-    option: PropTypes.object
+    data: PropTypes.array.isRequired,
+    option: PropTypes.object.isRequired
   }
   render() {
     const {
@@ -21,11 +19,7 @@ class XAxis extends Component {
       option: {
         width,
         height,
-        margin,
-        xAxis: {
-          color,
-          fontSize
-        }
+        margin
       }
     } = this.props
     const { top, left, right, bottom } = margin
@@ -34,18 +28,35 @@ class XAxis extends Component {
     const ticks = data.map((d, i) => {
       return (
         <g className="x-axis-tick" key={`tick-${i}`}>
-          <line x1={left + scale(i)} x2={left + scale(i)} y1={y} y2={y + 6} stroke={color} />
-          <text x={left + scale(i)} y={y + 20} textAnchor='middle' fontSize={fontSize}>{d}</text>
+          <line 
+            x1={left + scale(i)} 
+            x2={left + scale(i)} 
+            y1={y} y2={y + 6} 
+            stroke='rgb(70,170,255)' 
+          />
+          <text 
+            x={left + scale(i)} 
+            y={y + 20} 
+            textAnchor='middle' 
+            fontSize={16} 
+            fill='#46aaff'>
+          {d}
+          </text>
         </g>
       )
     })
     return (
       <g className="x-axis">
-        <line x1={left} y1={y} x2={width - left - right} y2={y} stroke="#808080" />
+        <line 
+          x1={left} 
+          y1={y} 
+          x2={width - left - right} 
+          y2={y} 
+          stroke='rgba(70,170,255,0.6)' 
+        />
         {ticks}
       </g>
     )
   }
 }
-
 export default XAxis
