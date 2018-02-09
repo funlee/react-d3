@@ -3,7 +3,7 @@
  * @Email: i@funlee.cn
  * @Date: 2018-01-18 21:18:20
  * @Last Modified time: 2018-01-18 21:18:20
- * @Description: react todo style 
+ * @Description: react todo style
  */
 
 * {
@@ -71,4 +71,14 @@ nav {
     transform: translate(-50%, -50%);
     text-align: center;
     width: 100%;
+}
+
+svg{
+  display: block;
+  border: 1px solid red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
