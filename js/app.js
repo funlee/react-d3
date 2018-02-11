@@ -8,6 +8,7 @@ import '../css/style.scss'
 import Home from './components/Home'
 import Bar from './components/Bar'
 import Pie from './components/Pie'
+import Force from './components/Force'
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <span><NavLink exact to="/home">Home</NavLink></span>
             <span><NavLink exact to="/bar">Bar</NavLink></span>
             <span><NavLink exact to="/pie">Pie</NavLink></span>
+            <span><NavLink exact to="/force">Force</NavLink></span>
 
           </nav>
           <div className="charts-wrap">
@@ -27,6 +29,7 @@ class App extends Component {
               <Route path="/home" component={Home} />
               <Route path="/bar" component={Bar} />
               <Route path="/pie" component={Pie} />
+              <Route path="/force" component={Force} />
 
             </Switch>
           </div>

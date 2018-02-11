@@ -1,14 +1,15 @@
 /*
  * @Author: funlee
  * @Email: i@funlee.cn
- * @Date: 2018-02-11 09:19:56
- * @Last Modified time: 2018-02-11 09:19:56
- * @Description: 利用 PieChart 绘制一个柱状图
+ * @Date: 2018-02-11 15:54:21
+ * @Last Modified time: 2018-02-11 15:54:21
+ * @Description: 利用 ForceChart 绘制一个力导向图
  */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Mock from 'mockjs'
-import PieChart from '../charts/PieChart'
+import ForceChart from '../charts/ForceChart'
+
 class Pie extends Component {
   constructor(props) {
     super(props)
@@ -18,10 +19,10 @@ class Pie extends Component {
   }
   getData() {
     return Mock.mock({
-      'pie|4-7': [
+      'force|5-8': [
         {
           'name': '@first()',
-          'value|+1': [20, 30, 40, 50, 60, 70, 80]
+          'value': '@natural(20, 100)'
         }
       ]
     })
@@ -42,7 +43,7 @@ class Pie extends Component {
   render() {
     return (
       <div>
-        <PieChart data={this.state.data.pie} option={this.renderOption()} />
+        <ForceChart data={this.state.data.force} option={this.renderOption()} />
       </div>
     )
   }
