@@ -77,10 +77,10 @@ class PieChart extends Component {
         onMouseOut={this.normal.bind(this)}
       >
         <path
-          fill={`rgba(220,60,55,${1 - i / 20})`}
+          fill={`rgba(74,140,229,${1 - i / 20})`}
           transform={this.state.emOrder === i ? `scale(${1 - i / 10 + 0.1}, ${1 - i / 10 + 0.1})` : `scale(${1 - i / 10},${1 - i / 10})`}
           d={arc(d)}
-          stroke={`rgba(220,60,55,${1 - i / 20})`}
+          stroke={`rgba(74,140,229,${1 - i / 20})`}
           strokeWidth={2}
         />
         <text className='arcs-value'

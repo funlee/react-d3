@@ -61,9 +61,6 @@ class ForceChart extends Component {
       })
     }
 
-    console.log(nodes)
-    console.log(links)
-
     simulation.nodes(nodes)
       .on('tick', function(){
         ctx.clearRect(0, 0, width, height)
