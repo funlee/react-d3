@@ -18,14 +18,26 @@ class Chord extends Component {
     }
   }
   getData() {
-    return Mock.mock({
-      'chord|4-7': [
-        {
-          'name': '@first()',
-          'value|+1': [20, 30, 40, 50, 60, 70, 80]
-        }
-      ]
-    })
+    const len = parseInt(Math.random() * 5, 10) + 4
+    const str = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+    const nameData = []
+    const numData = []
+    for(let i = 0; i < len;i++) {
+      const start = parseInt(Math.random() * 5, 10) + 2
+      const spart = parseInt(Math.random() * 4, 10) + 2
+      nameData.push(str.slice(start * 2, start * 2 + spart))
+
+      const item = []
+      for (let j = 0; j < len; j++) {
+        const num = parseInt(Math.random() * 1000, 10) + 20
+        item.push(num)
+      }
+      numData.push(item)
+    }
+    return {
+      nameData:nameData,
+      numData:numData
+    }
   }
   renderOption() {
     return {
@@ -34,18 +46,19 @@ class Chord extends Component {
     }
   }
   componentDidMount() {
-    // setInterval(() => {
-    //   this.setState({
-    //     data: this.getData()
-    //   })
-    // }, 8000)
+    setInterval(() => {
+      this.setState({
+        data: this.getData()
+      })
+    }, 8000)
   }
   render() {
     return (
       <div>
-        <ChordChart data={this.state.data.chord} option={this.renderOption()} />
+        <ChordChart data={this.state.data} option={this.renderOption()} />
       </div>
     )
   }
 }
+
 export default Chord

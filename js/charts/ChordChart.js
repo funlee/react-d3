@@ -9,7 +9,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import * as d3 from 'd3'
-import { text } from 'd3-request';
 
 class ChordChart extends Component {
   constructor(props) {
@@ -71,7 +70,6 @@ class ChordChart extends Component {
     )
   }
   getInnerPath(data) {
-    console.log(data)
     const { option: { width } } = this.props
     const innerRadius = width / 2 * 0.5
 
@@ -99,25 +97,18 @@ class ChordChart extends Component {
     const { data, option } = this.props
     const { width, height } = option
 
-    var continent = ["亚洲", "欧洲", "非洲", "美洲", "大洋洲"];
-
-    var population = [
-      [9000, 870, 3000, 1000, 5200],
-      [3400, 8000, 2300, 4922, 374],
-      [2000, 2000, 7700, 4881, 1050],
-      [3000, 8012, 5531, 500, 400],
-      [3540, 4310, 1500, 1900, 300]
-    ];
+    // console.log(data)
 
     var chord = d3.chord()
       .padAngle(0.03)
       .sortSubgroups(d3.ascending)
 
-    const dataset = chord(population)
+    const dataset = chord(data.numData)
+
     return (
       <svg width={width} height={height}>
         <g transform={`translate(${width / 2},${height / 2})`}>
-          {this.getOuterPath(dataset.groups, continent)}
+          {this.getOuterPath(dataset.groups, data.nameData)}
           {this.getInnerPath(dataset)}
         </g>
       </svg>
