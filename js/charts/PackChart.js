@@ -23,8 +23,10 @@ class PackChart extends Component {
     // defaultOption
   }
   getNodes(data) {
-    const color = d3.scaleSequential(d3.interpolateMagma)
-      .domain([-4, 4])
+    // const color = d3.scaleSequential(d3.interpolateMagma)
+    //   .domain([-4, 4])
+
+    const color = d3.scaleOrdinal(d3.schemeCategory20)
 
     const nodeDOM = data.map((item, index) => (
       <g
@@ -50,7 +52,7 @@ class PackChart extends Component {
   render() {
     const { data, option } = this.props
     const { width, height, margin } = option
-    console.log(data)
+    // console.log(data)
 
     const pack = d3.pack()
       .size([height, height- 50])
