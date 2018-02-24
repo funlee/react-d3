@@ -25,6 +25,10 @@ module.exports = {
       loaders: ['react-hot', 'babel'],
     },
     {
+      test: /\.json$/,
+      loaders: ['json-loader']
+    },
+    {
       test: /\.scss$/,
       include: [
         path.resolve(__dirname, 'css'),

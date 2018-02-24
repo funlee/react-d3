@@ -14,6 +14,7 @@ import Tree from './components/Tree'
 import Cluster from './components/Cluster'
 import Stack from './components/Stack'
 import Pack from './components/Pack'
+import Map from './components/Map'
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
             <span><NavLink exact to="/cluster">Cluster</NavLink></span>
             <span><NavLink exact to="/stack">Stack</NavLink></span>
             <span><NavLink exact to="/pack">Pack</NavLink></span>
+            <span><NavLink exact to="/map">Map</NavLink></span>
 
           </nav>
           <div className="charts-wrap">
@@ -45,6 +47,7 @@ class App extends Component {
               <Route path="/cluster" component={Cluster} />
               <Route path="/stack" component={Stack} />
               <Route path="/pack" component={Pack} />
+              <Route path="/map" component={Map} />
 
             </Switch>
           </div>

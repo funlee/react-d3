@@ -2,7 +2,7 @@ react-d3
 =============
 结合 [React](https://reactjs.org 'React') 和 [D3.js](https://d3js.org 'D3.js') 写点 demo
 
-<!-- 在线预览：[请戳](http://show.funlee.cn/react-d3/index.html '在线预览') -->
+在线预览：[请戳](http://show.funlee.cn/react-d3/index.html '在线预览')
 
 技术栈
 ------
