@@ -12,6 +12,8 @@ import Force from './components/Force'
 import Chord from './components/Chord'
 import Tree from './components/Tree'
 import Cluster from './components/Cluster'
+import Stack from './components/Stack'
+import Pack from './components/Pack'
 
 class App extends Component {
   render() {
@@ -27,6 +29,8 @@ class App extends Component {
             <span><NavLink exact to="/chord">Chord</NavLink></span>
             <span><NavLink exact to="/tree">Tree</NavLink></span>
             <span><NavLink exact to="/cluster">Cluster</NavLink></span>
+            <span><NavLink exact to="/stack">Stack</NavLink></span>
+            <span><NavLink exact to="/pack">Pack</NavLink></span>
 
           </nav>
           <div className="charts-wrap">
@@ -39,6 +43,8 @@ class App extends Component {
               <Route path="/chord" component={Chord} />
               <Route path="/tree" component={Tree} />
               <Route path="/cluster" component={Cluster} />
+              <Route path="/stack" component={Stack} />
+              <Route path="/pack" component={Pack} />
 
             </Switch>
           </div>
